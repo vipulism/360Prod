@@ -1,12 +1,12 @@
 $(document).ready(function(e) {
     var $this = $(".wrap3d");
-    var hrztlstrip = 3;
-    var vrtlstrip = 10;
-    var speed = 25;
-    $this.width(615);
-    $this.height(345);
+    var hrztlstrip = 18;
+    var vrtlstrip = 3;
+    var speed = 10;
+    $this.width(359);
+    $this.height(640);
     var actualpos = 14;
-    var dly = 80;
+    var dly = 100000;
     var move = false;
     var movel = false;
     var mover = false;
@@ -20,8 +20,8 @@ $(document).ready(function(e) {
     var heightwrap = $this.height();
     var widthwrap = $this.width();
     var acp = widthwrap / heightwrap;
-    var rheight = 615 * 2;
-    var rwidth = 345 * 2;
+    var rheight = 359 *6/2;
+    var rwidth = 640 *6/2;
     var sth = rwidth / acp;
     $this.width(rwidth);
     $this.height(sth);
@@ -169,16 +169,16 @@ $(document).ready(function(e) {
 
 
 
-     $this.on("mouseout", function() {
+     /*$this.on("mouseout", function() {
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         mover = true;
         buttonclick()
-    });
+    });*/
 
 // defualt
-    $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
+  /*  $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         mover = true;
-        buttonclick()
+        buttonclick()*/
 
 
 });
