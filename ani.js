@@ -167,8 +167,6 @@ $(document).ready(function(e) {
         function myrt() { clearInterval(myrotate) }
     }
 
-
-
      /*$this.on("mouseout", function() {
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         mover = true;
