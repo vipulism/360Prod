@@ -20,8 +20,8 @@ $(document).ready(function(e) {
     var heightwrap = $this.height();
     var widthwrap = $this.width();
     var acp = widthwrap / heightwrap;
-    var rheight = 359 *6/2;
-    var rwidth = 640 *6/2;
+    var rheight = 359 /2;
+    var rwidth = 640  /2;
     var sth = rwidth / acp;
     $this.width(rwidth);
     $this.height(sth);
