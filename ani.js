@@ -138,7 +138,6 @@ console.log(posShareEl)
     }
     window.addEventListener("deviceorientation", handleOrientation, true);
 
-
     $('.start').click(function() {
         move2 = !move2
         var status = move2 ? "On" : "Off"
