@@ -2,7 +2,7 @@ $(document).ready(function(e) {
     var $this = $(".wrap3d");
     var hrztlstrip = 18;
     var vrtlstrip = 3;
-    var speed = 10;
+    var speed = 5;
     $this.width(165);
     $this.height(293.666666);
     var actualpos = 14;
@@ -96,26 +96,54 @@ $(document).ready(function(e) {
     var handleOrientation = function() {
         //      var x = Math.ceil(event.beta);  // In degree in the range [-180,180]
         var OriX = Math.floor(event.gamma),
-        newX = OriX/10 // In degree in the range [-90,90]
+            newX = Math.ceil(OriX / 3) // In degree in the range [-90,90]
 
+
+            // ------------------------------
+
+
+
+                var y = event.gamma; // In degree in the range [-90,90]
+
+        // To make computation easier we shift the range of x and y to [0,180]
+        y += 90;
+        var totalMove = hrztlstrip * vrtlstrip,
+        winfactor= 0.2;
+
+        // max degrees divided by the total number of share items
+        var winslice = 180 * winfactor / totalMove,
+            margins = (180 - 180 * winfactor) / 2;
+
+        // calculate which sharing item should be selected depending on the position of the touch/device
+        posShareEl = 3*Math.max(Math.min(Math.floor((y - margins) / winslice), totalMove-1), 0) + 1;
+
+console.log(posShareEl)
+
+
+            //  --------------------
         //$('.x').text("x: " + x);
-        $('.y').text("y: " + newX);
+        // $('.y').text("y: " + posShareEl);
 
         if (move2) {
-            xPrev < newX ? right() : left();
-            xPrev = newX
 
+            if (xPrev < posShareEl) {
+                right()
+            } else if (xPrev > posShareEl) {
+                left();
+            }
+            xPrev = posShareEl;
+            $('.pos').text("position: " + posShareEl)
         };
 
     }
     window.addEventListener("deviceorientation", handleOrientation, true);
 
 
-
     $('.start').click(function() {
         move2 = !move2
-        var status = move2 ? "true" : "false"
-        $('.x').text("move2: " + status)
+        var status = move2 ? "On" : "Off"
+        // $('.x span').text(status)
+        $(this).text(status)
 
     })
 
