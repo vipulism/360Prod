@@ -4,7 +4,7 @@ $(document).ready(function(e) {
     var vrtlstrip = 3;
     var speed = 10;
     $this.width(165);
-    $this.height(293.66);
+    $this.height(293.666666);
     var actualpos = 14;
     var dly = 100000;
     var move = false;
@@ -20,47 +20,29 @@ $(document).ready(function(e) {
     var heightwrap = $this.height();
     var widthwrap = $this.width();
     var acp = widthwrap / heightwrap;
-    var rheight = 165 *2/3;
-    var rwidth = 440.5 *2/3;
+    var rheight = 293.666666 * 3 / 2;
+    var rwidth = 165 * 3 / 2;
     var sth = rwidth / acp;
     $this.width(rwidth);
     $this.height(sth);
     var FF = !(window.mozInnerScreenX == null);
     $this.css({ "background-size": rwidth * hrztlstrip + "px" + " " + sth * vrtlstrip + "px", "-moz-background-size": rwidth * hrztlstrip + "px" + " " + sth * vrtlstrip + "px", "-webkit-background-size": rwidth * hrztlstrip + "px" + " " + sth * vrtlstrip + "px", "-o-background-size": rwidth * hrztlstrip + "px" + " " + sth * vrtlstrip + "px" });
-    $this.append("<div class='airow-left'></div><div class='airow-right'></div>");
-    $(".buttonpoint").click(function(e) { specificpos(6) });
-    $(".buttonpoint2").click(function(e) { specificpos(15) });
-    $(".buttonpoint3").click(function(e) { specificpos(24) });
-    $(".buttonpoint4").click(function(e) { specificpos(33) });
+
     var width = rwidth;
     var height = sth;
- 
+
     $this.on("mousedown touchstart", function() {
-        console.log('start')
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         move = true
     });
-   /* $(".airow-left").on("mousedown", function() {
-        e.preventDefault();
-        $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
-        movel = true;
-        buttonclick()
-    });
-    $(".airow-right").on("mousedown", function() {
-        e.preventDefault();
-        $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
-        mover = true;
-        buttonclick()
-    });*/
+
     $(document).on("mouseup touchend", function() {
-        console.log('up')
         $this.css({ "cursor": "-webkit-grab", "cursor": "-moz-grab" });
         move = false;
         movel = false;
         mover = false
     });
     $this.on("mousemove touchmove", function(event) {
-console.log('move')
         if (move == false) {
             return
         }
@@ -68,23 +50,9 @@ console.log('move')
         xPrev = event.pageX
     });
 
-    function buttonclick() {
-        if (movel) {
-            setTimeout(function() {
-                buttonclick();
-                left()
-            }, 0)
-        }
-        if (mover) {
-            setTimeout(function() {
-                buttonclick();
-                right()
-            }, 0)
-        }
-    }
+
 
     function left() {
-                console.log('left')
 
         poswdth = as * rwidth;
         poshght = bs * sth;
@@ -105,7 +73,6 @@ console.log('move')
     }
 
     function right() {
-        console.log('right')
         poswdth = as * rwidth;
         poshght = bs * sth;
         if (as < 0) {
@@ -124,77 +91,25 @@ console.log('move')
         }
     }
 
-    function specificpos(actualpos) {
-        var fixps = actualpos - 1;
-        if (bs <= parseInt(fixps / hrztlstrip)) {
-            var myrotate = setInterval(function() {
-                poswdth = as * rwidth;
-                poshght = bs * sth;
-                if (as == hrztlstrip) {
-                    as = 0;
-                    bs++
-                }
-                if (vrtlstrip == bs && as < hrztlstrip) {
-                    bs = 0;
-                    as = 0
-                }
-                vls++;
-                if (vls == speed) {
-                    vls = 0;
-                    as++;
-                    $this.css({ "background-position": -poswdth + "px" + " " + -poshght + "px" })
-                }
-                if (bs == parseInt(fixps / hrztlstrip)) {
-                    if (as - 1 == fixps % hrztlstrip) { myrt() }
-                }
-            }, 0)
-        }
-        if (bs > parseInt(fixps / hrztlstrip)) {
-            var myrotate = setInterval(function() {
-                poswdth = as * rwidth;
-                poshght = bs * sth;
-                if (as < 0) {
-                    as = hrztlstrip - 1;
-                    bs--
-                }
-                if (as == 0 && bs == 0) {
-                    bs = vrtlstrip - 1;
-                    as = hrztlstrip - 1
-                }
-                vls++;
-                if (vls == speed) {
-                    vls = 0;
-                    as--;
-                    $this.css({ "background-position": -poswdth + "px" + " " + -poshght + "px" })
-                }
-                if (bs == parseInt(fixps / hrztlstrip)) {
-                    if (as + 1 == fixps % hrztlstrip) { myrt() }
-                }
-            }, 0)
-        }
+    var oriToggle = function() {
 
-        function myrt() { clearInterval(myrotate) }
+        move = !move
     }
 
-     /*$this.on("mouseout", function() {
-        $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
-        mover = true;
-        buttonclick()
-    });*/
+    var handleOrientation = function() {
+        //      var x = Math.ceil(event.beta);  // In degree in the range [-180,180]
+        var OriX = Math.ceil(event.gamma); // In degree in the range [-90,90]
 
-// defualt
-  /*  $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
-        mover = true;
-        buttonclick()*/
- 
- var handleOrientation = function  () {
-      var x = event.beta;  // In degree in the range [-180,180]
-  var y = event.gamma; // In degree in the range [-90,90]
- 
-$('.x').text("x: " + x);
-$('.y').text("y: " + y);
- }
-window.addEventListener("deviceorientation", handleOrientation, true);
+        //$('.x').text("x: " + x);
+        $('.y').text("y: " + OriX);
+
+        if (move) {
+            xPrev < OriX ? right() : left();
+            xPrev = OriX
+
+        };
+
+    }
+    window.addEventListener("deviceorientation", handleOrientation, true);
 
 });
-  
