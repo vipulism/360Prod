@@ -95,14 +95,15 @@ $(document).ready(function(e) {
 
     var handleOrientation = function() {
         //      var x = Math.ceil(event.beta);  // In degree in the range [-180,180]
-        var OriX = Math.floor(event.gamma) / 5; // In degree in the range [-90,90]
+        var OriX = Math.floor(event.gamma),
+        newX = OriX/10 // In degree in the range [-90,90]
 
         //$('.x').text("x: " + x);
-        $('.y').text("y: " + OriX);
+        $('.y').text("y: " + newX);
 
         if (move2) {
-            xPrev < OriX ? right() : left();
-            xPrev = OriX
+            xPrev < newX ? right() : left();
+            xPrev = newX
 
         };
 
