@@ -95,7 +95,7 @@ $(document).ready(function(e) {
 
     var handleOrientation = function() {
         //      var x = Math.ceil(event.beta);  // In degree in the range [-180,180]
-        var OriX = Math.ceil(event.gamma); // In degree in the range [-90,90]
+        var OriX = Math.ceil(event.gamma) / 3; // In degree in the range [-90,90]
 
         //$('.x').text("x: " + x);
         $('.y').text("y: " + OriX);
