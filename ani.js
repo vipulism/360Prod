@@ -3,8 +3,8 @@ $(document).ready(function(e) {
     var hrztlstrip = 18;
     var vrtlstrip = 3;
     var speed = 10;
-    $this.width(359);
-    $this.height(640);
+    $this.width(165);
+    $this.height(293.66);
     var actualpos = 14;
     var dly = 100000;
     var move = false;
@@ -20,8 +20,8 @@ $(document).ready(function(e) {
     var heightwrap = $this.height();
     var widthwrap = $this.width();
     var acp = widthwrap / heightwrap;
-    var rheight = 359 /2;
-    var rwidth = 640  /2;
+    var rheight = 165 *2/3;
+    var rwidth = 440.5 *2/3;
     var sth = rwidth / acp;
     $this.width(rwidth);
     $this.height(sth);
