@@ -91,10 +91,7 @@ $(document).ready(function(e) {
         }
     }
 
-    var oriToggle = function() {
-
-        move = !move
-    }
+    var move2 = false;
 
     var handleOrientation = function() {
         //      var x = Math.ceil(event.beta);  // In degree in the range [-180,180]
@@ -103,7 +100,7 @@ $(document).ready(function(e) {
         //$('.x').text("x: " + x);
         $('.y').text("y: " + OriX);
 
-        if (move) {
+        if (move2) {
             xPrev < OriX ? right() : left();
             xPrev = OriX
 
@@ -111,5 +108,14 @@ $(document).ready(function(e) {
 
     }
     window.addEventListener("deviceorientation", handleOrientation, true);
+
+
+
+    $('.start').click(function() {
+        move2 = !move2
+        var status = move2 ? "true" : "false"
+        $('.x').text("move2: " + status)
+
+    })
 
 });
