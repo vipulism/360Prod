@@ -119,7 +119,6 @@ $(document).ready(function(e) {
 
 console.log(posShareEl)
 
-
             //  --------------------
         //$('.x').text("x: " + x);
         // $('.y').text("y: " + posShareEl);
