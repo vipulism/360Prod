@@ -186,7 +186,15 @@ console.log('move')
   /*  $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         mover = true;
         buttonclick()*/
-
+ 
+ var handleOrientation = function  () {
+      var x = event.beta;  // In degree in the range [-180,180]
+  var y = event.gamma; // In degree in the range [-90,90]
+ 
+$('.x').text("x: " + x);
+$('.y').text("y: " + y);
+ }
+window.addEventListener("deviceorientation", handleOrientation, true);
 
 });
   
