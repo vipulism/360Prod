@@ -34,27 +34,33 @@ $(document).ready(function(e) {
     $(".buttonpoint4").click(function(e) { specificpos(33) });
     var width = rwidth;
     var height = sth;
-    $this.on("mousedown", function() {
+ 
+    $this.on("mousedown touchstart", function() {
+        console.log('start')
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         move = true
     });
-    $(".airow-left").on("mousedown", function() {
+   /* $(".airow-left").on("mousedown", function() {
+        e.preventDefault();
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         movel = true;
         buttonclick()
     });
     $(".airow-right").on("mousedown", function() {
+        e.preventDefault();
         $this.css({ "cursor": "-webkit-grabbing", "cursor": "-moz-grabbing" });
         mover = true;
         buttonclick()
-    });
-    $(document).on("mouseup", function() {
+    });*/
+    $(document).on("mouseup touchend", function() {
+        console.log('up')
         $this.css({ "cursor": "-webkit-grab", "cursor": "-moz-grab" });
         move = false;
         movel = false;
         mover = false
     });
     $this.on("mousemove touchmove", function(event) {
+console.log('move')
         if (move == false) {
             return
         }
@@ -78,6 +84,8 @@ $(document).ready(function(e) {
     }
 
     function left() {
+                console.log('left')
+
         poswdth = as * rwidth;
         poshght = bs * sth;
         if (as == hrztlstrip) {
@@ -97,6 +105,7 @@ $(document).ready(function(e) {
     }
 
     function right() {
+        console.log('right')
         poswdth = as * rwidth;
         poshght = bs * sth;
         if (as < 0) {
